@@ -8,6 +8,7 @@ const app = express()
 app.use(express.json({ limit: '50mb' }))
 app.use(cors)
 app.use(morgan('combined', { stream: { write: (message) => logger.info(message) } }))
+app.use('/uploads', express.static(process.env.UPLOADS_PATH))
 app.use('/', routes)
 
 export default app
